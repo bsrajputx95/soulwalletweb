@@ -1,4 +1,5 @@
 {
-  "buildCommand": null,
+  "version": 2,
+  "buildCommand": "",
   "outputDirectory": "."
 }
