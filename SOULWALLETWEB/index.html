@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoulWallet — The World's Leading Decentralized Solana Exchange</title>
+    <meta name="description"
+        content="SoulWallet is the premier decentralized digital currency exchange built on Solana. Copy trade, swap, and explore markets — all in one app.">
+    <meta name="theme-color" content="#0a0914">
+    <meta property="og:title" content="SoulWallet — The World's Leading Decentralized Solana Exchange">
+    <meta property="og:description"
+        content="Copy trade any wallet, explore every market, and swap instantly — all from one beautifully simple app on Solana.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/hero-3d.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SoulWallet — Decentralized Solana Exchange">
+    <meta name="twitter:description" content="Copy trade, swap, and explore markets — all in one app on Solana.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Background layers -->
+    <div class="bg-mesh">
+        <div class="mesh-blob blob-1"></div>
+        <div class="mesh-blob blob-2"></div>
+        <div class="mesh-blob blob-3"></div>
+        <div class="mesh-blob blob-4"></div>
+    </div>
+    <div class="noise-overlay"></div>
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <img src="hero-logo.png" alt="SoulWallet" width="44" height="44">
+                </div>
+                <span class="logo-text">SoulWallet</span>
+            </a>
+
+            <div class="nav-actions">
+                <a href="/SOULWALLET-BETA.apk" download class="btn-signup" id="signupBtn">
+                    <span>Download</span>
+                    <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    <span>Powered by Solana </span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="title-line" data-delay="0">The World's Leading</span>
+                    <span class="title-line" data-delay="1">SuperWallet</span>
+                    <span class="title-line gradient-text" data-delay="2">Soul Wallet</span>
+                </h1>
+                <p class="hero-subtitle">
+                    SoulWallet is built on Solana for lightning-fast transactions.
+                </p>
+                <div class="hero-cta-group">
+                    <a href="#" class="btn-get-started" id="getStartedBtn">
+                        <span>Get started</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                    </a>
+                    <div class="live-stats">
+                        <div class="stat-item">
+                            <span class="stat-value" id="solPrice">$0.00</span>
+                            <span class="stat-label">SOL Price</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-value">$2.4B+</span>
+                            <span class="stat-label">24h Volume</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3D Image Hero Visual -->
+            <div class="hero-visual" id="heroVisual">
+                <div class="hero-3d-wrapper" id="hero3dWrapper">
+                    <!-- Ambient glows behind image -->
+                    <div class="ambient-glow ag-purple"></div>
+                    <div class="ambient-glow ag-green"></div>
+                    <div class="ambient-glow ag-cyan"></div>
+
+                    <!-- The 3D cube image — uses multiply blend to merge transparent bg -->
+                    <div class="hero-3d-tilt" id="hero3dTilt">
+                        <img src="hero-logo.png" alt="SoulWallet Logo" class="hero-cube-img" id="heroCubeImg"
+                            draggable="false">
+                        <!-- Light reflection that follows cursor -->
+                        <div class="cursor-reflect" id="cursorReflect"></div>
+                    </div>
+
+                    <!-- Floating neon orbs — repositioned to avoid token overlap -->
+                    <div class="float-orb fo-1"></div>
+                    <div class="float-orb fo-2"></div>
+                    <div class="float-orb fo-3"></div>
+                    <div class="float-orb fo-4"></div>
+                    <div class="float-orb fo-5"></div>
+
+                    <!-- Floating token logos — all GitHub-hosted for reliability -->
+                    <div class="float-token ft-solana">
+                        <img src="https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/So11111111111111111111111111111111111111112/logo.png"
+                            alt="Solana" draggable="false">
+                    </div>
+                    <div class="float-token ft-jupiter">
+                        <img src="https://static.jup.ag/jup/icon.png" alt="Jupiter" draggable="false">
+                    </div>
+                    <div class="float-token ft-pumpfun">
+                        <img src="https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB/logo.svg"
+                            alt="USDT" draggable="false">
+                    </div>
+                    <div class="float-token ft-wif">
+                        <img src="https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/SRMuApVNdxXokk5GT7XD5cUUgXMBCoAz2LHeuAoKWRt/logo.png"
+                            alt="Serum" draggable="false">
+                    </div>
+                    <div class="float-token ft-raydium">
+                        <img src="https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/MNDEFzGvMt87ueuHvVU9VcTqsAP5b3fTGPsHuuPA5ey/logo.png"
+                            alt="Marinade" draggable="false">
+                    </div>
+                    <div class="float-token ft-usdc">
+                        <img src="https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v/logo.png"
+                            alt="USDC" draggable="false">
+                    </div>
+                    <div class="float-token ft-jto">
+                        <img src="https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So/logo.png"
+                            alt="mSOL" draggable="false">
+                    </div>
+                    <div class="float-token ft-orca">
+                        <img src="https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE/logo.png"
+                            alt="Orca" draggable="false">
+                    </div>
+                    <div class="float-token ft-bonk">
+                        <img src="https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/EchesyfXePKdLtoiZSL8pBe8Myagyy8ZRqsACNCFGnvp/logo.png"
+                            alt="Bonfida" draggable="false">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom -->
+        <div class="hero-bottom">
+            <div class="social-links">
+                <a href="#" class="social-link">Linked in</a>
+                <a href="#" class="social-link">Twitter</a>
+                <a href="#" class="social-link">Facebook</a>
+                <a href="#" class="social-link">Instagram</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Network + IBUY Section -->
+    <section class="feature-section" id="socialSection">
+        <div class="feature-container">
+            <div class="feature-content">
+                <div class="feature-badge">
+                    <span class="badge-dot"></span>
+                    <span>Built-in Social Trading</span>
+                </div>
+                <h2 class="feature-title">
+                    <span class="ft-line">Social Network</span>
+                    <span class="ft-line ft-gradient">Lightning Speed With IBUY</span>
+                </h2>
+                <p class="feature-description">
+                    Your own crypto social network — follow top traders, like and comment on posts,
+                    react to your favourite creators' calls, and buy tokens instantly with IBUY.
+                    No tab switching, no slippage — just one tap from your social feed.
+                </p>
+                <div class="feature-highlights">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                                <defs>
+                                    <linearGradient id="iconGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#14F195" />
+                                        <stop offset="100%" stop-color="#00D1FF" />
+                                    </linearGradient>
+                                </defs>
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="url(#iconGrad1)" opacity="0.9" />
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="highlight-title">One-Tap IBUY</span>
+                            <span class="highlight-desc">Buy any token instantly from any post in your feed</span>
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                                <defs>
+                                    <linearGradient id="iconGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#9945FF" />
+                                        <stop offset="100%" stop-color="#14F195" />
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="9" cy="7" r="4" fill="url(#iconGrad2)" opacity="0.85" />
+                                <path d="M2 21v-2a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v2" fill="url(#iconGrad2)"
+                                    opacity="0.5" />
+                                <circle cx="18" cy="8" r="3" fill="url(#iconGrad2)" opacity="0.6" />
+                                <path d="M18 14a4 4 0 0 1 4 4v3" stroke="url(#iconGrad2)" stroke-width="1.5" fill="none"
+                                    opacity="0.5" />
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="highlight-title">Creator-Led Alpha</span>
+                            <span class="highlight-desc">Follow top traders and see their calls live</span>
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                                <defs>
+                                    <linearGradient id="iconGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#00D1FF" />
+                                        <stop offset="100%" stop-color="#9945FF" />
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="12" cy="12" r="10" stroke="url(#iconGrad3)" stroke-width="2"
+                                    opacity="0.7" />
+                                <path d="M12 6v6l4 2" stroke="url(#iconGrad3)" stroke-width="2.5" stroke-linecap="round"
+                                    opacity="0.9" />
+                                <circle cx="12" cy="12" r="2" fill="url(#iconGrad3)" opacity="0.8" />
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="highlight-title">Zero Slippage</span>
+                            <span class="highlight-desc">Solana-speed execution — no failed buys ever</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3D Phone Mockup -->
+            <div class="phone-showcase" id="phoneShowcase">
+                <div class="phone-glow"></div>
+                <div class="phone-3d" id="phone3d">
+                    <div class="phone-frame">
+                        <!-- Physical side buttons -->
+                        <div class="phone-btn phone-btn-power"></div>
+                        <div class="phone-btn phone-btn-volup"></div>
+                        <div class="phone-btn phone-btn-voldn"></div>
+                        <div class="phone-btn phone-btn-mute"></div>
+                        <!-- Dynamic island -->
+                        <div class="phone-notch"></div>
+                        <!-- Screen -->
+                        <div class="phone-screen">
+                            <img src="app-screenshot.png" alt="SoulWallet Social Feed" class="phone-screenshot"
+                                draggable="false">
+                        </div>
+                        <!-- Screen glare -->
+                        <div class="phone-glare"></div>
+                    </div>
+                </div>
+                <div class="phone-reflection"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Copy Trading Section — reversed layout -->
+    <section class="feature-section feature-reversed" id="copySection">
+        <div class="feature-container">
+            <!-- Phone on LEFT side -->
+            <div class="phone-showcase" id="phoneShowcase2">
+                <div class="phone-glow"></div>
+                <div class="phone-3d" id="phone3dCopy">
+                    <div class="phone-frame">
+                        <div class="phone-btn phone-btn-power"></div>
+                        <div class="phone-btn phone-btn-volup"></div>
+                        <div class="phone-btn phone-btn-voldn"></div>
+                        <div class="phone-btn phone-btn-mute"></div>
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+                            <img src="cpy.jpg" alt="SoulWallet Copy Trading" class="phone-screenshot" draggable="false">
+                        </div>
+                        <div class="phone-glare"></div>
+                    </div>
+                </div>
+                <div class="phone-reflection"></div>
+            </div>
+
+            <!-- Content on RIGHT side -->
+            <div class="feature-content">
+                <div class="feature-badge">
+                    <span class="badge-dot"></span>
+                    <span>Automated Copy Trading</span>
+                </div>
+                <h2 class="feature-title">
+                    <span class="ft-line">Copy Trading</span>
+                    <span class="ft-line ft-gradient">Any Wallet On Solana</span>
+                </h2>
+                <p class="feature-description">
+                    Mirror any wallet on Solana with lightning-fast, server-side auto-execution.
+                    Paste any address, set your budget, and let SoulWallet replicate every trade
+                    in real-time — no manual effort, no missed entries. Perfect for following whales,
+                    alpha callers, and top-performing traders without watching charts 24/7.
+                </p>
+                <div class="feature-highlights">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                                <defs>
+                                    <linearGradient id="iconGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#14F195" />
+                                        <stop offset="100%" stop-color="#9945FF" />
+                                    </linearGradient>
+                                </defs>
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="url(#iconGrad4)" opacity="0.9" />
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="highlight-title">Lightning Auto-Execution</span>
+                            <span class="highlight-desc">Server-side trades fire instantly — faster than any manual
+                                copy</span>
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                                <defs>
+                                    <linearGradient id="iconGrad5" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#00D1FF" />
+                                        <stop offset="100%" stop-color="#14F195" />
+                                    </linearGradient>
+                                </defs>
+                                <rect x="3" y="5" width="18" height="14" rx="3" stroke="url(#iconGrad5)"
+                                    stroke-width="1.8" opacity="0.6" />
+                                <path d="M8 12h8M12 9v6" stroke="url(#iconGrad5)" stroke-width="2"
+                                    stroke-linecap="round" opacity="0.9" />
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="highlight-title">Copy Any Solana Wallet</span>
+                            <span class="highlight-desc">Paste any address — whale, alpha caller, or top trader</span>
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                                <defs>
+                                    <linearGradient id="iconGrad6" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#9945FF" />
+                                        <stop offset="100%" stop-color="#00D1FF" />
+                                    </linearGradient>
+                                </defs>
+                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"
+                                    stroke="url(#iconGrad6)" stroke-width="1.8" opacity="0.5" />
+                                <path d="M8 12l3 3 5-6" stroke="url(#iconGrad6)" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round" opacity="0.9" />
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="highlight-title">Custom Stop Loss & Take Profit</span>
+                            <span class="highlight-desc">Set your own SL/TP per copied wallet — full risk control</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- All Markets Section — content left, phone right -->
+    <section class="feature-section markets-section" id="marketsSection">
+        <div class="feature-container">
+            <!-- Content on LEFT side -->
+            <div class="feature-content">
+                <div class="feature-badge">
+                    <span class="badge-dot"></span>
+                    <span>All Markets, One App</span>
+                </div>
+                <h2 class="feature-title">
+                    <span class="ft-line">Every Market.</span>
+                    <span class="ft-line ft-gradient">One Tap Away.</span>
+                </h2>
+                <p class="feature-description">
+                    Access DEX Screener, Raydium, PumpFun, Bonk, Jupiter, and dozens more —
+                    all from SoulWallet's built-in browser. No external apps, no copy-pasting links.
+                    Lightning-fast in-app web view for seamless performance across every platform.
+                    Browse, research, and trade — all without ever leaving the app.
+                </p>
+                <div class="markets-grid">
+                    <div class="market-tag">DEX Screener</div>
+                    <div class="market-tag">Raydium</div>
+                    <div class="market-tag">PumpFun</div>
+                    <div class="market-tag">Jupiter</div>
+                    <div class="market-tag">Bonk</div>
+                    <div class="market-tag">Orca</div>
+                    <div class="market-tag">Meteora</div>
+                    <div class="market-tag">Birdeye</div>
+                    <div class="market-tag">Tensor</div>
+                    <div class="market-tag">Magic Eden</div>
+                    <div class="market-tag tag-more">& many more</div>
+                </div>
+            </div>
+
+            <!-- Phone on RIGHT side -->
+            <div class="phone-showcase" id="phoneShowcase3">
+                <div class="phone-glow"></div>
+                <div class="phone-3d" id="phone3dMarkets">
+                    <div class="phone-frame">
+                        <div class="phone-btn phone-btn-power"></div>
+                        <div class="phone-btn phone-btn-volup"></div>
+                        <div class="phone-btn phone-btn-voldn"></div>
+                        <div class="phone-btn phone-btn-mute"></div>
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+                            <img src="mr.jpg" alt="SoulWallet Markets Browser" class="phone-screenshot"
+                                draggable="false">
+                        </div>
+                        <div class="phone-glare"></div>
+                    </div>
+                </div>
+                <div class="phone-reflection"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UX Section — Simple & Intuitive, phone left -->
+    <section class="feature-section feature-reversed" id="uxSection">
+        <div class="feature-container">
+            <!-- Phone on LEFT side -->
+            <div class="phone-showcase" id="phoneShowcase4">
+                <div class="phone-glow"></div>
+                <div class="phone-3d" id="phone3dUx">
+                    <div class="phone-frame">
+                        <div class="phone-btn phone-btn-power"></div>
+                        <div class="phone-btn phone-btn-volup"></div>
+                        <div class="phone-btn phone-btn-voldn"></div>
+                        <div class="phone-btn phone-btn-mute"></div>
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+                            <img src="ux.jpg" alt="SoulWallet Simple UX" class="phone-screenshot" draggable="false">
+                        </div>
+                        <div class="phone-glare"></div>
+                    </div>
+                </div>
+                <div class="phone-reflection"></div>
+            </div>
+
+            <!-- Content on RIGHT side -->
+            <div class="feature-content">
+                <div class="feature-badge">
+                    <span class="badge-dot"></span>
+                    <span>Designed for Everyone</span>
+                </div>
+                <h2 class="feature-title">
+                    <span class="ft-line">Beautifully Simple.</span>
+                    <span class="ft-line ft-gradient">Zero Learning Curve.</span>
+                </h2>
+                <p class="feature-description">
+                    No confusing menus, no overwhelming dashboards. SoulWallet is designed with a
+                    clean, intuitive interface that anyone can use — from first-time crypto users
+                    to seasoned traders. Every action is just a tap away. We obsess over every pixel
+                    so you can focus on what matters: your portfolio.
+                </p>
+                <div class="feature-highlights">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                                <defs>
+                                    <linearGradient id="iconGradUx1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#14F195" />
+                                        <stop offset="100%" stop-color="#00D1FF" />
+                                    </linearGradient>
+                                </defs>
+                                <rect x="3" y="3" width="7" height="7" rx="2" fill="url(#iconGradUx1)" opacity="0.9" />
+                                <rect x="14" y="3" width="7" height="7" rx="2" fill="url(#iconGradUx1)" opacity="0.6" />
+                                <rect x="3" y="14" width="7" height="7" rx="2" fill="url(#iconGradUx1)" opacity="0.6" />
+                                <rect x="14" y="14" width="7" height="7" rx="2" fill="url(#iconGradUx1)"
+                                    opacity="0.4" />
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="highlight-title">Clean & Minimal UI</span>
+                            <span class="highlight-desc">No clutter — every screen is clear, focused, and
+                                purposeful</span>
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                                <defs>
+                                    <linearGradient id="iconGradUx2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#9945FF" />
+                                        <stop offset="100%" stop-color="#14F195" />
+                                    </linearGradient>
+                                </defs>
+                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"
+                                    stroke="url(#iconGradUx2)" stroke-width="1.5" opacity="0.5" />
+                                <path d="M9 12l2 2 4-4" stroke="url(#iconGradUx2)" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round" opacity="0.9" />
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="highlight-title">One-Tap Everything</span>
+                            <span class="highlight-desc">Swap, send, copy-trade — all your actions in a single
+                                tap</span>
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                                <defs>
+                                    <linearGradient id="iconGradUx3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#00D1FF" />
+                                        <stop offset="100%" stop-color="#9945FF" />
+                                    </linearGradient>
+                                </defs>
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"
+                                    fill="url(#iconGradUx3)" opacity="0.8" />
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="highlight-title">Built for Humans</span>
+                            <span class="highlight-desc">No crypto jargon — designed so anyone can navigate with
+                                ease</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section class="feature-section coming-soon-section" id="roadmapSection">
+        <div class="coming-soon-wrap">
+            <div class="feature-badge">
+                <span class="badge-dot"></span>
+                <span>What's Next</span>
+            </div>
+            <h2 class="feature-title coming-soon-title">
+                <span class="ft-line">The Future is</span>
+                <span class="ft-line ft-gradient">Just Getting Started.</span>
+            </h2>
+            <p class="coming-soon-desc">
+                SoulWallet is evolving fast. Here's what's coming in upcoming updates.
+            </p>
+            <div class="coming-soon-grid">
+                <div class="cs-card">
+                    <div class="cs-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                            <circle cx="8" cy="12" r="4" stroke="url(#csG1)" stroke-width="1.8" />
+                            <circle cx="16" cy="12" r="4" stroke="url(#csG1)" stroke-width="1.8" />
+                            <defs>
+                                <linearGradient id="csG1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#9945FF" />
+                                    <stop offset="100%" stop-color="#14F195" />
+                                </linearGradient>
+                            </defs>
+                        </svg></div>
+                    <div class="cs-text">
+                        <strong>Multichain Support</strong>
+                        <span>Ethereum, Base, Arbitrum & more chains in one wallet</span>
+                    </div>
+                </div>
+                <div class="cs-card">
+                    <div class="cs-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                            <path d="M8 17V10M12 17V6M16 17v-4" stroke="url(#csG2)" stroke-width="2.2"
+                                stroke-linecap="round" />
+                            <defs>
+                                <linearGradient id="csG2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#14F195" />
+                                    <stop offset="100%" stop-color="#00D1FF" />
+                                </linearGradient>
+                            </defs>
+                        </svg></div>
+                    <div class="cs-text">
+                        <strong>Cross-Chain Copy Trading</strong>
+                        <span>Copy top wallets across every blockchain, fully automated</span>
+                    </div>
+                </div>
+                <div class="cs-card">
+                    <div class="cs-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="url(#csG3)" stroke-width="1.8"
+                                stroke-linejoin="round" />
+                            <defs>
+                                <linearGradient id="csG3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#00D1FF" />
+                                    <stop offset="100%" stop-color="#9945FF" />
+                                </linearGradient>
+                            </defs>
+                        </svg></div>
+                    <div class="cs-text">
+                        <strong>Algo & Bot Trading</strong>
+                        <span>Custom trading bots that execute strategies 24/7</span>
+                    </div>
+                </div>
+                <div class="cs-card">
+                    <div class="cs-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                            <rect x="2" y="5" width="20" height="14" rx="3" stroke="url(#csG4)" stroke-width="1.8" />
+                            <path d="M2 10h20" stroke="url(#csG4)" stroke-width="1.2" opacity="0.5" />
+                            <defs>
+                                <linearGradient id="csG4" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#9945FF" />
+                                    <stop offset="100%" stop-color="#DC1FFF" />
+                                </linearGradient>
+                            </defs>
+                        </svg></div>
+                    <div class="cs-text">
+                        <strong>SoulWallet Physical Cards</strong>
+                        <span>Spend crypto anywhere with a physical debit card</span>
+                    </div>
+                </div>
+                <div class="cs-card cs-card-glow">
+                    <div class="cs-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                                stroke="url(#csG5)" stroke-width="1.8" stroke-linejoin="round" />
+                            <defs>
+                                <linearGradient id="csG5" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#14F195" />
+                                    <stop offset="100%" stop-color="#9945FF" />
+                                </linearGradient>
+                            </defs>
+                        </svg></div>
+                    <div class="cs-text">
+                        <strong>& Much More</strong>
+                        <span>NFT marketplace, DeFi yields, fiat on-ramps — stay tuned</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="cursor-glow" id="cursorGlow"></div>
+    <script src="script.js"></script>
+</body>
+
+</html>
